@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot File Upload with AngularJS</title>
+    <meta charset="utf-8" />
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/MainApp.js"></script>
+    <script src="/js/UploadFileController.js"></script>
+    <script src="/js/GetFilesController.js"></script>
+</head>
+<body ng-app="MainApp">
+<h2>Spring Boot File Upload with AngularJS</h2>
+<div ng-controller="UploadController">
+    <form>
+        <br/><br/>
+        File to upload (1): <input type="file" file-model="myForm.files[0]"/><br />
+        File to upload (2): <input type="file" file-model="myForm.files[1]"/><br />
+        File to upload (3): <input type="file" file-model="myForm.files[2]"/><br />
+        File to upload (4): <input type="file" file-model="myForm.files[3]"/><br />
+        File to upload (5): <input type="file" file-model="myForm.files[4]"/><br />
+        <button type="button" ng-click="doUploadFile()">Upload</button>
+    </form>
+    <h2>Upload Results:</h2>
+    <div style="border:1px solid #ccc;padding: 5px;">
+        <span ng-bind="uploadResult"></span>
+    </div>
+</div>
+<!-- Get Files -->
+<hr>
+<div ng-controller="GetFilesController">
+    <button type="button" ng-click="getAllFiles()">Get All Files</button>
+    <ul>
+        <li ng-repeat="file in allFiles">
+            <a href='/rest/files/{{file}}'>{{file}}</a><br>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
